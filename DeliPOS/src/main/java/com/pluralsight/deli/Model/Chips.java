@@ -2,8 +2,8 @@ package com.pluralsight.deli.Model;
 
 public class Chips extends Product{
 
-    public Chips(double startingPrice, String name) {
-        super(startingPrice, name);
+    public Chips(String name) {
+        super(0, name);
     }
 
     public double calculateTotal(){

@@ -5,9 +5,9 @@ import com.pluralsight.deli.Enums.DrinkSize;
 public class Drinks extends Product{
 private final DrinkSize size;
 
-    public Drinks(double startingPrice, String name, DrinkSize size) {
-        super(startingPrice, name);
-        this.size = size;
+    public Drinks(String name, DrinkSize size) {
+        super(0, name);
+        this.size = DrinkSize;
     }
 
     public DrinkSize getSize() {
