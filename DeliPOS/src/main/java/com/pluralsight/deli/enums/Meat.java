@@ -1,6 +1,6 @@
-package com.pluralsight.deli.Enums;
+package com.pluralsight.deli.enums;
 
-public enum Meats {
+public enum Meat {
     STEAK,
     HAM,
     SALAMI,

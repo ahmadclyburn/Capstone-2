@@ -1,6 +1,6 @@
-package com.pluralsight.deli.Service.Interfaces;
+package com.pluralsight.deli.service.interfaces;
 
-import com.pluralsight.deli.Model.Order;
+import com.pluralsight.deli.model.Order;
 public interface OrderServiceInter {
     double calculateTotal(Order order);
     void checkOut(Order order);

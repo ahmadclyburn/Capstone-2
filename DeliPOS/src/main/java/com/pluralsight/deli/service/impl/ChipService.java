@@ -1,7 +1,7 @@
-package com.pluralsight.deli.Service.Impl;
+package com.pluralsight.deli.service.impl;
 
-import com.pluralsight.deli.Model.Chips;
-import com.pluralsight.deli.Service.Interfaces.ChipServiceInter;
+import com.pluralsight.deli.model.Chips;
+import com.pluralsight.deli.service.interfaces.ChipServiceInter;
 
 import java.util.Scanner;
 public class ChipService implements ChipServiceInter {

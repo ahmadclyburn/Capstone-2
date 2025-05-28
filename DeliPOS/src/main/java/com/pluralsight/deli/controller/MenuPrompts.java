@@ -1,4 +1,4 @@
-package com.pluralsight.deli.Controller;
+package com.pluralsight.deli.controller;
 
 
 public class MenuPrompts {

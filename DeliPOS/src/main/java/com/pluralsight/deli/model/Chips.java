@@ -1,9 +1,9 @@
-package com.pluralsight.deli.Model;
+package com.pluralsight.deli.model;
 
 public class Chips extends Product{
 
     public Chips(String name) {
-        super(0, name);
+        super();
     }
 
     public double calculateTotal(){

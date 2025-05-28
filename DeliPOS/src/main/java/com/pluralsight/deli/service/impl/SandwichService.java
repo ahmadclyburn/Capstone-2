@@ -1,12 +1,10 @@
-package com.pluralsight.deli.Service.Impl;
+package com.pluralsight.deli.service.impl;
 
-import com.pluralsight.deli.Enums.*;
-import com.pluralsight.deli.Model.Sandwich;
-import com.pluralsight.deli.Service.Interfaces.SandwichServiceInter;
+import com.pluralsight.deli.enums.*;
+import com.pluralsight.deli.model.Sandwich;
+import com.pluralsight.deli.service.interfaces.SandwichServiceInter;
 
-import javax.sound.midi.Soundbank;
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-import java.sql.SQLOutput;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,7 +20,7 @@ public class SandwichService implements SandwichServiceInter {
         Size size = selectSandwichSize();
         BreadType breadType = selectBreadType();
         boolean isToasted = isToasted();
-        Sandwich sandwich = new Sandwich("custom Sandwich", size, breadType, isToasted);
+        Sandwich sandwich = new Sandwich();
         selectMeat(sandwich);
         selectCheese(sandwich);
         selectToppings(sandwich);
@@ -33,39 +31,39 @@ public class SandwichService implements SandwichServiceInter {
     }
 
     private boolean isSignature(){
-        while(true){
+        while(true) {
             System.out.println("would you like a signature sandwhich? (1: yes, 2: no): ");
             String choice = input.nextLine();
-            if (choice.equals("1")){
+            if (choice.equals("1")) {
                 return true;
-            }else if(choice.equals("2")){
+            } else if (choice.equals("2")) {
                 return false;
-            }else{
+            } else {
                 System.out.println("invalid option, please try again.");
             }
-            }
+        }
 
     }
-    private Sandwich selectSignature(){
-        System.out.println("enter signature sandwhich(1:BLT or 2:Philly Cheese): ");
+    private Sandwich selectSignature() {
+       while(true){ System.out.println("enter signature sandwhich(1:BLT or 2:Philly Cheese): ");
         String choice = input.nextLine();
-        switch(choice){
-            case"1":
-                List<Meats> meats = List.of(Meats.BACON);
-                List<Cheeses> cheeses = List.of(Cheeses.CHEDDAR_CHEESE);
-                List<Sauces> sauces = List.of(Sauces.RANCH);
-                List<Toppings> toppings = List.of(Toppings.LETUCE, Toppings.TOMATOES)
-                return new Sandwich("BLT",BreadType.WHITE, Size.MEDIUM,meats, cheeses, toppings, sauces, true);
+        switch (choice) {
+            case "1":
+                List<Meat> meats = List.of(Meat.BACON);
+                List<Cheese> cheeses = List.of(Cheese.CHEDDAR_CHEESE);
+                List<Sauce> sauces = List.of(Sauce.RANCH);
+                List<Topping> toppings = List.of(Topping.LETUCE, Topping.TOMATOES);
+                return new Sandwich("BLT", BreadType.WHITE, Size.MEDIUM, meats, cheeses, toppings, sauces, true);
             case "2":
-                List<Meats> meats1 = List.of(Meats.STEAK);
-                List<Cheeses> cheeses1  =List.of(Cheeses.AMERICAN_CHEESE);
-                List<Sauces> sauces1 = List.of(Sauces.MAYO);
-                List<Toppings> toppings1 = List.of(Toppings.PEPPERS);
+                List<Meat> meats1 = List.of(Meat.STEAK);
+                List<Cheese> cheeses1 = List.of(Cheese.AMERICAN_CHEESE);
+                List<Sauce> sauces1 = List.of(Sauce.MAYO);
+                List<Topping> toppings1 = List.of(Topping.PEPPERS);
                 return new Sandwich("Philly Cheese Steak", BreadType.WHITE, Size.MEDIUM, meats1, cheeses1, toppings1, sauces1, true);
             default:
                 System.out.println("invalid choice, try again");
         }
-
+    }
     }
     private Size selectSandwichSize(){
         while(true){System.out.println("select a size");
@@ -114,82 +112,82 @@ public class SandwichService implements SandwichServiceInter {
             }
         }
     }
-    private Meats selectMeat(Sandwich sandwich){
+    private Meat selectMeat(Sandwich sandwich){
         while (true) {System.out.println("select a meat");
             String meatsChoice = input.nextLine();
             switch (meatsChoice){
                 case"1":
-                    return Meats.BACON;
+                    return Meat.BACON;
                 case"2":
-                    return Meats.CHICKEN;
+                    return Meat.CHICKEN;
                 case"3":
-                    return Meats.HAM;
+                    return Meat.HAM;
                 case"4":
-                    return Meats.STEAK;
+                    return Meat.STEAK;
                 case"5":
-                    return Meats.SALAMI;
+                    return Meat.SALAMI;
                 case"6":
-                    return Meats.ROAST_BEEF;
+                    return Meat.ROAST_BEEF;
                 default:
                     System.out.println("invalid choice, try again");
     }}}
 
-    private Cheeses selectCheese(Sandwich sandwich){
+    private Cheese selectCheese(Sandwich sandwich){
         while (true) {System.out.println("select a cheese");
             String cheeseChoice = input.nextLine();
             switch (cheeseChoice){
                 case"1":
-                    return Cheeses.AMERICAN_CHEESE;
+                    return Cheese.AMERICAN_CHEESE;
                 case"2":
-                    return Cheeses.PROVOLONE_CHEESE;
+                    return Cheese.PROVOLONE_CHEESE;
                 case"3":
-                    return Cheeses.CHEDDAR_CHEESE;
+                    return Cheese.CHEDDAR_CHEESE;
                 case"4":
-                    return Cheeses.SWISS_CHEESE;
+                    return Cheese.SWISS_CHEESE;
                 default:
                     System.out.println("invalid choice, try again");
     }}}
-    private Toppings selectToppings(Sandwich sandwich){
+    private Topping selectToppings(Sandwich sandwich){
         while (true) {System.out.println("select a topping");
             String breadChoice = input.nextLine();
             switch (breadChoice){
                 case"1":
-                    return Toppings.LETUCE;
+                    return Topping.LETUCE;
                 case"2":
-                    return Toppings.PEPPERS;
+                    return Topping.PEPPERS;
                 case"3":
-                    return Toppings.CUCUMBERS;
+                    return Topping.CUCUMBERS;
                 case"4":
-                    return Toppings.TOMATOES;
+                    return Topping.TOMATOES;
                 case"5":
-                    return Toppings.JALEPENOS;
+                    return Topping.JALEPENOS;
                 case"6":
-                    return Toppings.GUACAMOLE;
+                    return Topping.GUACAMOLE;
                 case"7":
-                    return Toppings.MUSHROOMS;
+                    return Topping.MUSHROOMS;
                 case"8":
-                    return Toppings.PICKLES;
+                    return Topping.PICKLES;
                 case"9":
-                    return Toppings.ONIONS;
+                    return Topping.ONIONS;
                 default:
                     System.out.println("invalid choice, try again");
     }}}
-    private Sauces selectSauces(Sandwich sandwich){
+    private Sauce selectSauces(Sandwich sandwich){
         while (true) {System.out.println("select a sauce");
             String sauceChoice = input.nextLine();
             switch (sauceChoice){
                 case"1":
-                    return Sauces.MAYO;
+                    return Sauce.MAYO;
                 case"2":
-                    return Sauces.KETCHUP;
+                    return Sauce.KETCHUP;
                 case"3":
-                    return Sauces.RANCH;
+                    return Sauce.RANCH;
                 case"4":
-                    return Sauces.VINAIGRETTE;
+                    return Sauce.VINAIGRETTE;
                 case"5":
-                    return Sauces.THOUSAND_ISLAND;
+                    return Sauce.THOUSAND_ISLAND;
                 case"6":
-                    return Sauces.MUSTARD;
+                    return Sauce.MUSTARD;
                 default:
                     System.out.println("invalid choice, try again");
     }}}

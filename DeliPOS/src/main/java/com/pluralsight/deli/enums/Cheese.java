@@ -1,6 +1,6 @@
-package com.pluralsight.deli.Enums;
+package com.pluralsight.deli.enums;
 
-public enum Cheeses {
+public enum Cheese {
     AMERICAN_CHEESE,
     SWISS_CHEESE,
     PROVOLONE_CHEESE,

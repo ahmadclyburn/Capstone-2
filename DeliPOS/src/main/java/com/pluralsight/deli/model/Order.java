@@ -1,6 +1,6 @@
-package com.pluralsight.deli.Model;
+package com.pluralsight.deli.model;
 
-import com.pluralsight.deli.Util.DataManager;
+import com.pluralsight.deli.util.DataManager;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package com.pluralsight.deli.Model;
+package com.pluralsight.deli.model;
 
-import com.pluralsight.deli.Enums.DrinkSize;
+import com.pluralsight.deli.enums.DrinkSize;
 
 public class Drinks extends Product{
 private final DrinkSize size;

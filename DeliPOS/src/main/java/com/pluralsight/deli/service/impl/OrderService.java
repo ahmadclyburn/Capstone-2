@@ -1,6 +1,6 @@
-package com.pluralsight.deli.Service.Impl;
+package com.pluralsight.deli.service.impl;
 
-import com.pluralsight.deli.Service.Interfaces.OrderServiceInter;
+import com.pluralsight.deli.service.interfaces.OrderServiceInter;
 
 import java.util.Scanner;
 

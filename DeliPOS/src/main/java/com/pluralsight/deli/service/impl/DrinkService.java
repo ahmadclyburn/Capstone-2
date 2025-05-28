@@ -1,8 +1,8 @@
-package com.pluralsight.deli.Service.Impl;
+package com.pluralsight.deli.service.impl;
 
-import com.pluralsight.deli.Enums.DrinkSize;
-import com.pluralsight.deli.Model.Drinks;
-import com.pluralsight.deli.Service.Interfaces.DrinkServiceInter;
+import com.pluralsight.deli.enums.DrinkSize;
+import com.pluralsight.deli.model.Drinks;
+import com.pluralsight.deli.service.interfaces.DrinkServiceInter;
 
 import java.util.Scanner;
 
