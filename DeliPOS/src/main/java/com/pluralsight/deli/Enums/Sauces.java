@@ -1,7 +1,10 @@
 package com.pluralsight.deli.Enums;
 
 public enum Sauces {
-    SMALL,
-    MEDIUM,
-    LARGE
+    MAYO,
+    MUSTARD,
+    RANCH,
+    KETCHUP,
+    THOUSAND_ISLAND,
+    VINAIGRETTE
 }

@@ -27,6 +27,7 @@ public class Sandwich extends Product{
         this.meat = new ArrayList<>();
         this.isToasted = isToasted;
         this.extraMeat = false;
+        this.extraCheese = false;
 
         if (size == Size.SMALL){
             this.startingPrice = 5.50;
@@ -63,4 +64,7 @@ public class Sandwich extends Product{
 
     }
 
+    public void setExtraCheese(boolean extraCheese) {
+        this.extraCheese = extraCheese;
+    }
 }

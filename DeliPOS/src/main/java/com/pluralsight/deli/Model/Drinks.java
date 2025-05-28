@@ -7,7 +7,7 @@ private final DrinkSize size;
 
     public Drinks(String name, DrinkSize size) {
         super(0, name);
-        this.size = DrinkSize;
+        this.size = size;
     }
 
     public DrinkSize getSize() {
