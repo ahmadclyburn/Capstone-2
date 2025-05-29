@@ -82,7 +82,7 @@ public class SandwichService implements SandwichServiceInter {
 
     }
     private BreadType selectBreadType(){
-        while (true) {System.out.println("select a a bread type");
+        while (true) {System.out.println("select a bread type");
         String breadChoice = input.nextLine();
         switch (breadChoice){
             case"1":
