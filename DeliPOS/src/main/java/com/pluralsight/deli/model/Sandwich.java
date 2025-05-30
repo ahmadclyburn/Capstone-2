@@ -5,58 +5,59 @@ import com.pluralsight.deli.enums.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sandwich extends Product{
-    private BreadType breadType;
-    private Size size;
-    private List<Meat> meats;
-    private List<Cheese> cheeses;
-    private List<Topping> toppings;
-    private List<Sauce> sauces;
-    private boolean isToasted;
-    private boolean extraMeat;
-    private boolean extraCheese;
+public class Sandwich extends Product {
+    protected SandwichSize size;
+    protected BreadType breadType;
+    protected List<RegularToppings> regularToppings;
+    protected List<PremiumToppings> premiumToppings;
+    protected List<Sauces> sauces;
+    protected boolean isToasted;
+    protected boolean extraMeat;
+    protected boolean extraCheese;
 
-    public Sandwich() {
-        super();
-        this.cheeses = new ArrayList<>();
-        this.toppings = new ArrayList<>();
-        this.sauces = new ArrayList<>();
-        this.meats = new ArrayList<>();
-        this.extraMeat = false;
-        this.extraCheese = false;
-
-        if (size == Size.SMALL){
-            this.startingPrice = 5.50;
-        }else if(size == Size.MEDIUM){
-            this.startingPrice = 7.00;
-        } else if (size == Size.LARGE) {
-            this.startingPrice = 8.50;
-        }
-    }
-
-    public Sandwich(String name, BreadType breadType, Size size, List<Meat> meat, List<Cheese> cheeses,
-                    List<Topping> toppings, List<Sauce> sauces, boolean isToasted) {
-        super(0, name);
-        this.breadType = breadType;
+    public Sandwich(String name, SandwichSize size, BreadType breadType,
+                    boolean isToasted) {
+        super(name, 0);
         this.size = size;
-        this.cheeses = new ArrayList<>();
-        this.toppings = new ArrayList<>();
+        this.breadType = breadType;
+        this.regularToppings = new ArrayList<>();
+        this.premiumToppings = new ArrayList<>();
         this.sauces = new ArrayList<>();
-        this.meats = new ArrayList<>();
         this.isToasted = isToasted;
         this.extraMeat = false;
-        this.extraCheese = false;
 
-        if (size == Size.SMALL){
+        if (size == SandwichSize.SMALL) {
             this.startingPrice = 5.50;
-        }else if(size == Size.MEDIUM){
+        } else if (size == SandwichSize.MEDIUM) {
             this.startingPrice = 7.00;
-        } else if (size == Size.LARGE) {
+        } else if (size == SandwichSize.LARGE) {
             this.startingPrice = 8.50;
         }
     }
 
-    public Size getSize() {
+    public Sandwich(String name, SandwichSize size, BreadType breadType,
+                    boolean isToasted, List<RegularToppings> regularToppings, List<PremiumToppings> premiumToppings, List<Sauces> sauces) {
+        super(name, 0);
+        this.size = size;
+        this.breadType = breadType;
+        this.regularToppings = regularToppings;
+        this.premiumToppings = premiumToppings;
+        this.isToasted = isToasted;
+        this.sauces = sauces;
+        this.extraMeat = false;
+
+        if (size == SandwichSize.SMALL) {
+            this.startingPrice = 5.50;
+        } else if (size == SandwichSize.MEDIUM) {
+            this.startingPrice = 7.00;
+        } else if (size == SandwichSize.LARGE) {
+            this.startingPrice = 8.50;
+        }
+    }
+
+
+
+    public SandwichSize getSize() {
         return size;
     }
 
@@ -64,41 +65,78 @@ public class Sandwich extends Product{
         return breadType;
     }
 
-    public List<Topping> getToppings() {
-        return toppings;
+    public List<RegularToppings> getRegularToppings() {
+        return regularToppings;
     }
 
-    public List<Meat> getMeats() {
-        return meats;
-    }
-
-    public List<Cheese> getCheeses() {
-        return cheeses;
+    public List<PremiumToppings> getPremiumToppings() {
+        return premiumToppings;
     }
 
     public boolean isToasted() {
         return isToasted;
     }
 
+
     public boolean isExtraMeat() {
         return extraMeat;
     }
 
-    public double calculateTotal(){
-       double total = startingPrice;
+    @Override
+    public double calculateProductTotal() {
+        double total = startingPrice; //product total
+        for (PremiumToppings topping : premiumToppings) { //iterating through premium toppings
+            if (topping.getType() == PremiumToppings.Type.MEAT) { //conditional one if the topping is meat
+                if (size == SandwichSize.SMALL) {
+                    total += 1.00;
+                } else if (size == SandwichSize.MEDIUM) {
+                    total += 2.00;
+                } else if (size == SandwichSize.LARGE) {
+                    total += 3.00;
+                }
+            } else if (topping.getType() == PremiumToppings.Type.CHEESE) {
+                if (size == SandwichSize.SMALL) {
+                    total += 0.75;
+                } else if (size == SandwichSize.MEDIUM) {
+                    total += 1.50;
+                } else if (size == SandwichSize.LARGE) {
+                    total += 2.25;
+                }
+            }
+        }
+
+        if (extraMeat) {
+            if (size == SandwichSize.SMALL) {
+                total += 0.50;
+            } else if (size == SandwichSize.MEDIUM) {
+                total += 1.00;
+            } else if (size == SandwichSize.LARGE) {
+                total += 1.50;
+            }
+        }
+
+        if (extraCheese) {
+            if (size == SandwichSize.SMALL) {
+                total += 0.30;
+            } else if (size == SandwichSize.MEDIUM) {
+                total += 0.60;
+            } else if (size == SandwichSize.LARGE) {
+                total += 0.90;
+            }
+        }
         return total;
     }
 
     @Override
     public String productDetails() {
-        StringBuilder details = new StringBuilder( "    " + String.format("$%.2f", calculateTotal()) + " \n"
+        StringBuilder details = new StringBuilder(name + "    " + String.format("$%.2f", calculateProductTotal()) + " \n"
                 + size + "\n    Bread Type: " + breadType + "\n    Toasted: " + isToasted +  "\n    Regular Toppings: ");
-        for (Topping topping : toppings) {
+        for (RegularToppings topping : regularToppings) {
             details.append(topping).append(", ");
         }
-        details.append("\n           Toppings: ");
-        for (Meat meat : meats) {
-            details.append(meat).append(", ");
+        details.append("\n    Premium Toppings: ");
+        for (PremiumToppings topping : premiumToppings) {
+            details.append(topping).append(", ");
         }
         if(extraMeat) {
             details.append("\n    Extra Meat: Yes");
@@ -106,34 +144,26 @@ public class Sandwich extends Product{
             details.append("\n    Extra Meat: No");
         }
         details.append("\n    Sauces: ");
-        for (Sauce sauce : sauces) {
+        for (Sauces sauce : sauces) {
             details.append(sauce).append(", ");
         }
         return details.toString();
     }
 
-    public void addMeat(List<Meat> meat) {
-
+    public void addRegularTopping(RegularToppings topping) {
+        regularToppings.add(topping);
     }
 
-    public void addCheese(List<Cheese> cheeses){
-
+    public void addPremiumTopping(PremiumToppings topping) {
+        premiumToppings.add(topping);
     }
 
-    public void addSauces(List<Sauce> sauces){
-
+    public void addSauce(Sauces sauce) {
+        sauces.add(sauce);
     }
 
-    public void addToppings (List<Cheese> toppings) {
-
-    }
-
-    public void setIsToasted(boolean isToasted){
-
-    }
-
-    public void setExtraMeat(boolean extraMeat){
-
+    public void setExtraMeat(boolean extraMeat) {
+        this.extraMeat = extraMeat;
     }
 
     public void setExtraCheese(boolean extraCheese) {

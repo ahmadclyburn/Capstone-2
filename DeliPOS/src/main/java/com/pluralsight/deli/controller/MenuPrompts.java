@@ -1,6 +1,5 @@
 package com.pluralsight.deli.controller;
 
-
 public class MenuPrompts {
     static String homeMenu = """
 ╔════════════════════════════════════════════════════════════╗
@@ -19,6 +18,7 @@ public class MenuPrompts {
 ║                 1: Add Sandwich                    ║
 ║                 2: Add Chips                       ║
 ║                 3: Add Drink                       ║
+║                 4: Checkout                        ║
 ║                 0: Cancel Order                    ║
 ╚════════════════════════════════════════════════════╝
               Choose an option:\s""";
@@ -27,10 +27,10 @@ public class MenuPrompts {
 ╔══════════════════════════════════════════════════════════╗
 ║                     Chips Selection                      ║
 ╠══════════════════════════════════════════════════════════╣
-║                 1: Doritos: Cheddar                      ║
+║                 1: Lays Original                         ║
 ║                 2: Lays BBQ                              ║
 ║                 3: Lays Sour Cream & Onion               ║
-║                 4: Lays Original                         ║
+║                 4: Doritos Nacho Cheese                  ║
 ║                 5: Doritos Cool Ranch                    ║
 ╚══════════════════════════════════════════════════════════╝
                  Choose an option:\s""";
@@ -74,10 +74,10 @@ public class MenuPrompts {
 ╔══════════════════════════════════════════════════════════╗
 ║                       Drinks                             ║
 ╠══════════════════════════════════════════════════════════╣
-║                 1: Dr. Pepper                            ║
-║                 2: Lemonade                              ║
-║                 3: Water                                 ║
-║                 4: Mt. Dew                               ║
+║                 1: Coke                                  ║
+║                 2: Tea                                   ║
+║                 3: Sprite                                ║
+║                 4: Fanta                                 ║
 ╚══════════════════════════════════════════════════════════╝
                  Choose an option:\s""";
 

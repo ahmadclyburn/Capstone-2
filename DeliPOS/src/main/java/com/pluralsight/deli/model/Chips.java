@@ -1,15 +1,18 @@
 package com.pluralsight.deli.model;
 
-public class Chips extends Product{
+public class Chips extends Product {
 
     public Chips(String name) {
-        super();
+        super(name, 0);
     }
 
-    public double calculateTotal(){
+    @Override
+    public double calculateProductTotal() {
         return 1.50;
-   }
-public String productDetails(){
-    return " " + getName() + String.format(" $%.2f", calculateTotal());
-}
+    }
+
+    @Override
+    public String productDetails() {
+        return getName() + " $" + String.format("%.2f", calculateProductTotal());
+    }
 }

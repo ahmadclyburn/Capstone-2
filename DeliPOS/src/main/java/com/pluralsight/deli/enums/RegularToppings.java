@@ -1,11 +1,11 @@
 package com.pluralsight.deli.enums;
 
-public enum Topping {
-    LETUCE,
+public enum RegularToppings {
+    LETTUCE,
     PEPPERS,
     ONIONS,
     TOMATOES,
-    JALEPENOS,
+    JALAPENOS,
     CUCUMBERS,
     PICKLES,
     GUACAMOLE,

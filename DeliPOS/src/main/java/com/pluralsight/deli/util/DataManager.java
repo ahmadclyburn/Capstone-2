@@ -1,57 +1,74 @@
 package com.pluralsight.deli.util;
-import com.pluralsight.deli.model.Order;
-import com.pluralsight.deli.model.Product;
-import com.pluralsight.deli.service.impl.OrderService;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import com.pluralsight.deli.model.*;
+import com.pluralsight.deli.service.impl.OrderServiceImpl;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
-import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DataManager {
-    public List<Order> orders = new ArrayList<>();
-    Random r = new Random();
-    private OrderService orderServiceInter;
-    String databaseFilepath = "src/receipts" + ".csv";
-    public String getOrderNumber(){
-        int r1 = r.nextInt(1000);
-        String.valueOf(r1);
-        String orderNumber = String.valueOf(r1);
-        return orderNumber;
+    String databaseFilepath = "src/main/resources/transaction-history" + ".csv";
+    private OrderServiceImpl orderService;
+    private List<Order> orders = new ArrayList<>(); // Initialize the orders list
+
+    public void setOrderService(OrderServiceImpl orderService) {
+        this.orderService = orderService;
     }
-    public void writeToFile(Order order){
-        try (FileWriter writer = new FileWriter(databaseFilepath, true)) {
-            writer.write(getOrderNumber() + "|" + String.format("%.2f", orderServiceInter.calculateTotal(order)) + "\n");
+
+    public void receiptGenerator(Order order) {
+        LocalDateTime today = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd HH:mm:ss");
+        DateTimeFormatter ordNum = DateTimeFormatter.ofPattern("yyyyMMdd-hhmmss");
+        String ordNumFormat = today.format(ordNum);
+        String formattedToday = today.format(formatter);
+        String receiptFilepath = "src/main/resources/receipts/" + formattedToday + ".txt";
+
+        try (FileWriter writer = new FileWriter(receiptFilepath)) {
+            writer.write("Order Number: " + "ord-" + ordNumFormat + "\n");
+            writer.write("Customer Name: " + order.getCustomerName() + "\n");
+            writer.write("Items: \n");
+            for (Product item : order.getItems()) {
+                writer.write(item.productDetails() + "\n\n");
+            }
+            writer.write("Total: $" + String.format("%.2f", orderService.calculateTotal(order)) + "\n");
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-    public void receiptGenerator(Order order){
-        LocalDateTime today = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd HH:mm:ss");
-        DateTimeFormatter ordNum = DateTimeFormatter.ofPattern("yyyyMMdd-hh:mm:ss");
-        String ordNumFormat = today.format(ordNum);
-        String formattedToday = today.format(formatter);
-        String receiptPath = "src/receipts" + formattedToday + ".txt";
 
-        try (FileWriter writer = new FileWriter(receiptPath)) {
-                writer.write("Order Number: " + "ord-" + ordNumFormat+ "\n");
-                writer.write("Items: \n");
-                for(Product item: order.getItems()){
-                    writer.write(item.productDetails() + "\n\n");
-                }
-                writer.write("Total: $" + String.format("%.2f",orderServiceInter.calculateTotal(order)) + "\n");
-            }catch (IOException e) {
-            throw new RuntimeException(e);
+    public void saveToDatabase(Order order) {
+        try (FileWriter writer = new FileWriter(databaseFilepath, true)) {
+            writer.write(getOrderNumber() + "|" + order.getCustomerName() + "|" + String.format("%.2f", orderService.calculateTotal(order)) + "\n");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
+
+    public void loadFromDatabase() {
+        // Load transactions
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(databaseFilepath));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split("[|]");
+                String orderNumber = data[0];
+                String customerName = data[1];
+                Order order = new Order(customerName);
+                orders.add(order);
+            }
+            reader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getOrderNumber() {
+        LocalDateTime today = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-hhmmss");
+        String formattedToday = today.format(formatter);
+        return "ord-" + formattedToday;
+    }
 }
-
-
 

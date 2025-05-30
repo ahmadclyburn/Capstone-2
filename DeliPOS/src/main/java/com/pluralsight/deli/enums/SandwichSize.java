@@ -1,6 +1,6 @@
 package com.pluralsight.deli.enums;
 
-public enum Size {
+public enum SandwichSize {
     SMALL,
     MEDIUM,
     LARGE

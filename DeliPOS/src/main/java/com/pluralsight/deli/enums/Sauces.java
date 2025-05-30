@@ -1,10 +1,11 @@
 package com.pluralsight.deli.enums;
 
-public enum Sauce {
+public enum Sauces {
     MAYO,
     MUSTARD,
     RANCH,
     KETCHUP,
     THOUSAND_ISLAND,
-    VINAIGRETTE
+    VINAIGRETTE,
+    AU_JUS
 }
