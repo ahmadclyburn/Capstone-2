@@ -1,0 +1,35 @@
+Order Number: ord-20250530_14-12-29
+Customer Name: lebowski
+Items: 
+BLT    $10.50 
+MEDIUM
+    Bread Type: WHITE
+    Toasted: true
+    Regular Toppings: LETTUCE, TOMATOES, 
+    Premium Toppings: BACON, CHEDDAR_CHEESE, 
+    Extra Meat: No
+    Sauces: RANCH, 
+
+Custom Sandwich    $6.80 
+SMALL
+    Bread Type: WHITE
+    Toasted: false
+    Regular Toppings: PEPPERS, 
+    Premium Toppings: STEAK, 
+    Extra Meat: No
+    Sauces: MAYO, 
+
+Custom Sandwich    $5.50 
+SMALL
+    Bread Type: WHITE
+    Toasted: true
+    Regular Toppings: 
+    Premium Toppings: 
+    Extra Meat: No
+    Sauces: 
+
+Lays Original $1.50
+
+MEDIUM Coke $2.50
+
+Total: $26.80

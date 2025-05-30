@@ -23,6 +23,7 @@ public class DataManager {
         String ordNumFormat = today.format(formatter);
         String receiptDirectory = "C:\\pluralsight\\Capstone-2\\DeliPOS\\src\\main\\resources\\receipts";
         String receiptFilePath = receiptDirectory + "/receipt_" + ordNumFormat + ".txt";
+
         File directory = new File(receiptDirectory);
         if (!directory.exists()) {
             directory.mkdirs();}
@@ -47,23 +48,6 @@ public class DataManager {
             e.printStackTrace();
         }
     }
-//    public void loadFromDatabase() {
-//        // Load transactions
-//        try {
-//            BufferedReader reader = new BufferedReader(new FileReader(databaseFilepath));
-//            String line;
-//            while ((line = reader.readLine()) != null) {
-//                String[] data = line.split("[|]");
-//                String orderNumber = data[0];
-//                String customerName = data[1];
-//                Order order = new Order(customerName);
-//                orders.add(order);
-//            }
-//            reader.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     public String getOrderNumber() {
         LocalDateTime today = LocalDateTime.now();
