@@ -8,9 +8,9 @@ import java.util.List;
 public class Sandwich extends Product {
     protected SandwichSize size;
     protected BreadType breadType;
-    protected List<RegularToppings> regularToppings;
-    protected List<PremiumToppings> premiumToppings;
-    protected List<Sauces> sauces;
+    protected List<RegularTopping> regularToppings;
+    protected List<PremiumTopping> premiumToppings;
+    protected List<Sauce> sauces;
     protected boolean isToasted;
     protected boolean extraMeat;
     protected boolean extraCheese;
@@ -36,7 +36,7 @@ public class Sandwich extends Product {
     }
 
     public Sandwich(String name, SandwichSize size, BreadType breadType,
-                    boolean isToasted, List<RegularToppings> regularToppings, List<PremiumToppings> premiumToppings, List<Sauces> sauces) {
+                    boolean isToasted, List<RegularTopping> regularToppings, List<PremiumTopping> premiumToppings, List<Sauce> sauces) {
         super(name, 0);
         this.size = size;
         this.breadType = breadType;
@@ -65,11 +65,11 @@ public class Sandwich extends Product {
         return breadType;
     }
 
-    public List<RegularToppings> getRegularToppings() {
+    public List<RegularTopping> getRegularToppings() {
         return regularToppings;
     }
 
-    public List<PremiumToppings> getPremiumToppings() {
+    public List<PremiumTopping> getPremiumToppings() {
         return premiumToppings;
     }
 
@@ -85,8 +85,8 @@ public class Sandwich extends Product {
     @Override
     public double calculateProductTotal() {
         double total = startingPrice; //product total
-        for (PremiumToppings topping : premiumToppings) { //iterating through premium toppings
-            if (topping.getType() == PremiumToppings.Type.MEAT) { //conditional one if the topping is meat
+        for (PremiumTopping topping : premiumToppings) { //iterating through premium toppings
+            if (topping.getType() == PremiumTopping.Type.MEAT) { //conditional one if the topping is meat
                 if (size == SandwichSize.SMALL) {
                     total += 1.00;
                 } else if (size == SandwichSize.MEDIUM) {
@@ -94,7 +94,7 @@ public class Sandwich extends Product {
                 } else if (size == SandwichSize.LARGE) {
                     total += 3.00;
                 }
-            } else if (topping.getType() == PremiumToppings.Type.CHEESE) {
+            } else if (topping.getType() == PremiumTopping.Type.CHEESE) {
                 if (size == SandwichSize.SMALL) {
                     total += 0.75;
                 } else if (size == SandwichSize.MEDIUM) {
@@ -131,11 +131,11 @@ public class Sandwich extends Product {
     public String productDetails() {
         StringBuilder details = new StringBuilder(name + "    " + String.format("$%.2f", calculateProductTotal()) + " \n"
                 + size + "\n    Bread Type: " + breadType + "\n    Toasted: " + isToasted +  "\n    Regular Toppings: ");
-        for (RegularToppings topping : regularToppings) {
+        for (RegularTopping topping : regularToppings) {
             details.append(topping).append(", ");
         }
         details.append("\n    Premium Toppings: ");
-        for (PremiumToppings topping : premiumToppings) {
+        for (PremiumTopping topping : premiumToppings) {
             details.append(topping).append(", ");
         }
         if(extraMeat) {
@@ -144,21 +144,21 @@ public class Sandwich extends Product {
             details.append("\n    Extra Meat: No");
         }
         details.append("\n    Sauces: ");
-        for (Sauces sauce : sauces) {
+        for (Sauce sauce : sauces) {
             details.append(sauce).append(", ");
         }
         return details.toString();
     }
 
-    public void addRegularTopping(RegularToppings topping) {
+    public void addRegularTopping(RegularTopping topping) {
         regularToppings.add(topping);
     }
 
-    public void addPremiumTopping(PremiumToppings topping) {
+    public void addPremiumTopping(PremiumTopping topping) {
         premiumToppings.add(topping);
     }
 
-    public void addSauce(Sauces sauce) {
+    public void addSauce(Sauce sauce) {
         sauces.add(sauce);
     }
 

@@ -31,9 +31,8 @@ public class OrderServiceImpl implements OrderService {
         System.out.println("Thank you for your order, " + order.getCustomerName() + "!\n════════════════════════" +
                 "══════════════════════════════════════════════════════════════════════════════" +
                 "═══════════════════════════════════════════\n\n\n\n\n\n\n\n\n\n");
-        dataManager.loadFromDatabase();
         dataManager.receiptGenerator(order);
-        dataManager.saveToDatabase(order);
+        dataManager.saveToDataFile(order);
     }
 
     @Override

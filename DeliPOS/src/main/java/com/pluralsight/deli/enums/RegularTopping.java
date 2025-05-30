@@ -1,6 +1,6 @@
 package com.pluralsight.deli.enums;
 
-public enum RegularToppings {
+public enum RegularTopping {
     LETTUCE,
     PEPPERS,
     ONIONS,

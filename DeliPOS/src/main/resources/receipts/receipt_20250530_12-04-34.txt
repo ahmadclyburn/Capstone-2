@@ -1,0 +1,26 @@
+Order Number: ord-20250530_12-04-34
+Customer Name: dkdk
+Items: 
+BLT    $10.50 
+MEDIUM
+    Bread Type: WHITE
+    Toasted: true
+    Regular Toppings: LETTUCE, TOMATOES, 
+    Premium Toppings: BACON, CHEDDAR_CHEESE, 
+    Extra Meat: No
+    Sauces: RANCH, 
+
+Custom Sandwich    $6.80 
+SMALL
+    Bread Type: WHITE
+    Toasted: true
+    Regular Toppings: LETTUCE, 
+    Premium Toppings: STEAK, 
+    Extra Meat: No
+    Sauces: MAYO, 
+
+Lays BBQ $1.50
+
+SMALL Coke $2.00
+
+Total: $20.80

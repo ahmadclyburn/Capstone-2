@@ -1,0 +1,6 @@
+Order Number: ord-20250530_11-50-40
+Customer Name: sdfds
+Items: 
+Lays BBQ $1.50
+
+Total: $1.50

@@ -75,7 +75,7 @@ public class UI {
                     currentOrder.addItem(drinkService.selectDrink());
                     break;
                 case "4":
-                    orderService.checkout(currentOrder);
+                    orderService.checkOut(currentOrder);
                     ordering = false;
                     break;
                 case "0":

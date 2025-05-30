@@ -1,6 +1,6 @@
 package com.pluralsight.deli.enums;
 
-public enum PremiumToppings {
+public enum PremiumTopping {
     // Meats
     STEAK(Type.MEAT),
     HAM(Type.MEAT),
@@ -17,7 +17,7 @@ public enum PremiumToppings {
 
     private final Type type;
 
-    PremiumToppings(Type type) {
+    PremiumTopping(Type type) {
         this.type = type;
     }
 

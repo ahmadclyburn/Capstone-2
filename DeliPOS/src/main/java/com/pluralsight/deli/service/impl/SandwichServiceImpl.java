@@ -56,14 +56,14 @@ public class SandwichServiceImpl implements SandwichService {
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1":
-                    List<PremiumToppings> premiumToppings = List.of(PremiumToppings.BACON, PremiumToppings.CHEDDAR_CHEESE);
-                    List<RegularToppings> regularToppings = List.of(RegularToppings.LETTUCE, RegularToppings.TOMATOES);
-                    List<Sauces> sauces = List.of(Sauces.RANCH);
+                    List<PremiumTopping> premiumToppings = List.of(PremiumTopping.BACON, PremiumTopping.CHEDDAR_CHEESE);
+                    List<RegularTopping> regularToppings = List.of(RegularTopping.LETTUCE, RegularTopping.TOMATOES);
+                    List<Sauce> sauces = List.of(Sauce.RANCH);
                     return new Sandwich("BLT", SandwichSize.MEDIUM, BreadType.WHITE, true, regularToppings, premiumToppings, sauces);
                 case "2":
-                    List<PremiumToppings> premToppings = List.of(PremiumToppings.STEAK, PremiumToppings.AMERICAN_CHEESE);
-                    List<RegularToppings> regToppings = List.of(RegularToppings.PEPPERS);
-                    List<Sauces> sauceList = List.of(Sauces.MAYO);
+                    List<PremiumTopping> premToppings = List.of(PremiumTopping.STEAK, PremiumTopping.AMERICAN_CHEESE);
+                    List<RegularTopping> regToppings = List.of(RegularTopping.PEPPERS);
+                    List<Sauce> sauceList = List.of(Sauce.MAYO);
                     return new Sandwich("Philly Cheese", SandwichSize.MEDIUM, BreadType.WHITE, true, regToppings, premToppings, sauceList);
                 default:
                     System.out.println("Invalid choice. Please try again.");
@@ -131,16 +131,16 @@ public class SandwichServiceImpl implements SandwichService {
             if (choice.equals("0")) {
                 done = true;
             } else {
-                RegularToppings topping = switch (choice) {
-                    case "1" -> RegularToppings.LETTUCE;
-                    case "2" -> RegularToppings.PEPPERS;
-                    case "3" -> RegularToppings.ONIONS;
-                    case "4" -> RegularToppings.TOMATOES;
-                    case "5" -> RegularToppings.JALAPENOS;
-                    case "6" -> RegularToppings.CUCUMBERS;
-                    case "7" -> RegularToppings.PICKLES;
-                    case "8" -> RegularToppings.GUACAMOLE;
-                    case "9" -> RegularToppings.MUSHROOMS;
+                RegularTopping topping = switch (choice) {
+                    case "1" -> RegularTopping.LETTUCE;
+                    case "2" -> RegularTopping.PEPPERS;
+                    case "3" -> RegularTopping.ONIONS;
+                    case "4" -> RegularTopping.TOMATOES;
+                    case "5" -> RegularTopping.JALAPENOS;
+                    case "6" -> RegularTopping.CUCUMBERS;
+                    case "7" -> RegularTopping.PICKLES;
+                    case "8" -> RegularTopping.GUACAMOLE;
+                    case "9" -> RegularTopping.MUSHROOMS;
                     default -> {
                         System.out.println("Invalid choice. Please try again.");
                         yield null;
@@ -162,17 +162,17 @@ public class SandwichServiceImpl implements SandwichService {
             if (choice.equals("0")) {
                 done = true;
             } else {
-                PremiumToppings topping = switch (choice) {
-                    case "1" -> PremiumToppings.STEAK;
-                    case "2" -> PremiumToppings.HAM;
-                    case "3" -> PremiumToppings.SALAMI;
-                    case "4" -> PremiumToppings.ROAST_BEEF;
-                    case "5" -> PremiumToppings.CHICKEN;
-                    case "6" -> PremiumToppings.BACON;
-                    case "7" -> PremiumToppings.AMERICAN_CHEESE;
-                    case "8" -> PremiumToppings.SWISS_CHEESE;
-                    case "9" -> PremiumToppings.PROVOLONE_CHEESE;
-                    case "10" -> PremiumToppings.CHEDDAR_CHEESE;
+                PremiumTopping topping = switch (choice) {
+                    case "1" -> PremiumTopping.STEAK;
+                    case "2" -> PremiumTopping.HAM;
+                    case "3" -> PremiumTopping.SALAMI;
+                    case "4" -> PremiumTopping.ROAST_BEEF;
+                    case "5" -> PremiumTopping.CHICKEN;
+                    case "6" -> PremiumTopping.BACON;
+                    case "7" -> PremiumTopping.AMERICAN_CHEESE;
+                    case "8" -> PremiumTopping.SWISS_CHEESE;
+                    case "9" -> PremiumTopping.PROVOLONE_CHEESE;
+                    case "10" -> PremiumTopping.CHEDDAR_CHEESE;
                     default -> {
                         System.out.println("Invalid choice. Please try again.");
                         yield null;
@@ -193,14 +193,14 @@ public class SandwichServiceImpl implements SandwichService {
             if (choice.equals("0")) {
                 done = true;
             } else {
-                Sauces sauce = switch (choice) {
-                    case "1" -> Sauces.MAYO;
-                    case "2" -> Sauces.MUSTARD;
-                    case "3" -> Sauces.KETCHUP;
-                    case "4" -> Sauces.RANCH;
-                    case "5" -> Sauces.THOUSAND_ISLAND;
-                    case "6" -> Sauces.VINAIGRETTE;
-                    case "7" -> Sauces.AU_JUS;
+                Sauce sauce = switch (choice) {
+                    case "1" -> Sauce.MAYO;
+                    case "2" -> Sauce.MUSTARD;
+                    case "3" -> Sauce.KETCHUP;
+                    case "4" -> Sauce.RANCH;
+                    case "5" -> Sauce.THOUSAND_ISLAND;
+                    case "6" -> Sauce.VINAIGRETTE;
+                    case "7" -> Sauce.AU_JUS;
                     case "0" -> null;
                     default -> {
                         System.out.println("Invalid choice. Please try again.");
